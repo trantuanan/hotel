@@ -10,11 +10,6 @@ ja:
   japanese: "日本語"
 
   users:
-<<<<<<< HEAD
-=======
-    settings: "セッティング"
-    remember: "サインしたままにする"
->>>>>>> 88e2df35805a15d81e247993308d41a93df6055c
     name: "ニックネーム"
     email: "メール"
     password: "パスワード"
@@ -29,14 +24,6 @@ ja:
     format: "%{message}"
 
   activerecord:
-<<<<<<< HEAD
-=======
-    models:
-      user: "ユーザー"
-    attributes:
-      user:
-        email: "メール"
->>>>>>> 88e2df35805a15d81e247993308d41a93df6055c
     errors:
       models:
         user:
