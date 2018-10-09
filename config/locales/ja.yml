@@ -20,7 +20,7 @@ ja:
     confirmations: "まだ確認メールが届いていない場合はこちらへ"
     edit: "ユーザー情報の編集"
     update: "保存"
-    pass_confirm: "変更を確認するには現在のパスワードが必要です"
+    password_confirm: "変更を確認するには現在のパスワードが必要です"
     blank_pass: "変更したくない場合は空白のままにしてください"
     current: "現在のパスワード"
     edit_confirm: "まだ確認していない"

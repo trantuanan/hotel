@@ -1,0 +1,12 @@
+production:
+  GMAIL_USERNAME: "testruby1996noobsi@gmail.com"
+  GMAIL_PASSWORD: "noobsitestruby1996"
+  HOST: "movie-nerd.herokuapp.com"
+development:
+  GMAIL_USERNAME: "testruby1996noobsi@gmail.com"
+  GMAIL_PASSWORD: "noobsitestruby1996"
+  HOST: "0.0.0.0:3000"
+test:
+  GMAIL_USERNAME: "testruby1996noobsi@gmail.com"
+  GMAIL_PASSWORD: "noobsitestruby1996"
+  HOST: "0.0.0.0:3000"
