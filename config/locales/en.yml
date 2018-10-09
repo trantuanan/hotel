@@ -18,7 +18,7 @@ en:
     confirmations: "Didn't receive confirmation instructions?"
     edit: "Edit user"
     update: "Update"
-    pass_confirm: "we need your current password to confirm your changes"
+    password_confirm: "we need your current password to confirm your changes"
     blank_pass: "leave blank if you don't want to change it"
     current: "Current password"
     edit_confirm: "Currently waiting confirmation for"

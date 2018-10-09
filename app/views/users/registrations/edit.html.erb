@@ -1,49 +1,59 @@
-<% provide :title, t("users.edit") %>
-<h1><%= t "users.edit" %></h1>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="login-form">
+  <% provide :title, t("users.edit") %>
+  <h2><%= t "users.edit" %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "box" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t "users.edit_confirm" %>: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %>
-    <i>(<%= t "users.blank_pass" %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>(<%= t("users.min_pass", min: @minimum_password_length) %>)</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div><%= t "users.edit_confirm" %>: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <i>(<%= t "users.blank_pass" %>)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "box" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em>(<%= t("users.min_pass", min: @minimum_password_length) %>)</em>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password, t("users.current") %>
-    <i>(<%= t "users.pass_confirm" %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "box" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :picture, t("users.avatar") %> <br />
-    <span class="picture">
-      <%= image_tag resource.picture.url if resource.picture? %>
-      <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
-    </span>
-  </div>
+    <div class="field">
+      <%= f.label :current_password, t("users.current") %>
+      <i>(<%= t "users.password_confirm" %>)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "box" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :picture, t("users.avatar") %> <br />
+      <span class="picture">
+        <% if resource.picture? %>
+          <%= image_tag resource.picture.url %>
+        <% else %>
+          <%= image_tag "default-avatar" %>
+        <% end %>
+        <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+      </span>
+    </div>
 
 
-  <div class="actions">
-    <%= f.submit t("users.update"), class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="actions text-center">
+      <%= f.submit t("users.update"), class: "btn btn-custom2" %>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>

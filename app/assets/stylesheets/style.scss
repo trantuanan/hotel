@@ -1,0 +1,98 @@
+@import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500);
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@mixin background-tile {
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 1.5em 1.25em;
+  margin-top: 40px;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: 24px;
+}
+.input-reset {
+  width: auto;
+  margin-left: 8px !important;
+}
+.field {
+  padding: 5px;
+  &:hover {
+    background-color: #F5F5F5;
+    padding: 5px;
+  }
+}
+
+
+.box {
+  padding: 7px;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  &:focus {
+    border-color: #62c2e4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
+
+
+/* Signup/Login form styles */
+
+.signup-form {
+  @include background-tile;
+
+  h2 {
+    margin-top: 0;
+  }
+
+}
+
+.login-form {
+  @include background-tile;
+
+  h2 {
+    margin-top: 0;
+  }
+
+}
+
+/* Button/link styles */
+
+.btn-custom {
+  color: darken(#f1c40f, 5%);
+  background-color: #fff;
+  border: 1px solid darken(#f1c40f, 5%);
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-family: 'Ubuntu', sans-serif;
+  &:hover {
+    text-decoration: none;
+    background-color: darken(#f1c40f, 5%);
+    color: #fff;
+    transition: 0.5s;
+    width: 100%;
+  }
+}
+
+.btn-custom2 {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #222;
+  padding: 8px 20px;
+  border-radius: 5px;
+  margin: 20px 0 30px 0;
+  width: 250px;
+  font-family: 'Ubuntu', sans-serif;
+  &:hover {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    transition: 0.5s;
+    width: 100%;
+  }
+}
+
