@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2018_10_04_152043) do
-
+  
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "review_id"
