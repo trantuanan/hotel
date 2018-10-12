@@ -1,0 +1,12 @@
+ <div class='nested-fields'>
+  <div class="field">
+    <%= f.label :equipment_id, t("equipment.item") %>
+    <%= f.collection_select :equipment_id, Equipment.all,
+      :id, :name, {class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :price, t("price") %>
+    <%= f.number_field :price, min: 0, value: 0, class: "form-control" %>
+  </div>
+  # <%= link_to_remove_association t("delete"), f %>
+</div>

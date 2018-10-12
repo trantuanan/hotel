@@ -1,0 +1,44 @@
+<%= form_for @motel, url: yield(:url) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "form-control" %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: "form-control" %>
+
+  <%= f.label :phone %>
+  <%= f.phone_field :phone, class: "form-control" %>
+
+  <%= f.label :level %>
+  <%= f.number_field :level, min: 0, max: 5, class: "form-control" %>
+
+  <%= f.label :images %>
+  <%= f.file_field :images, multiple: true %>
+
+  <h3><%= t "equipment.item" %></h3>
+  <div id='equipments'>
+    <%= f.fields_for :hotel_equips do |hotel_equip| %>
+      <%= render 'hotel_equip_fields', :f => hotel_equip %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association t("equipment.add_equipment"), f, :hotel_equips %>
+    </div>
+  </div>
+
+  <h3><%= t "room.item" %></h3>
+  <div id='rooms'>
+    <%= f.fields_for :hotel_rooms do |hotel_room| %>
+      <%= render 'hotel_room_fields', :f => hotel_room %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association t("room.add_room"), f, :hotel_rooms %>
+    </div>
+  </div>
+
+  <%= f.submit yield(:button), class: "btn btn-primary" %>
+
+<% end %>

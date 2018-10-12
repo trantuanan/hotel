@@ -5,8 +5,10 @@ class CreateReview < ActiveRecord::Migration[5.2]
       t.text :content
       t.integer :rate, default: 0
 
-      t.references :hotel, foreign_key: true
+      t.references :motel, foreign_key: true
       t.references :user, foreign_key: true
+
+      t.timestamps
     end
   end
 end

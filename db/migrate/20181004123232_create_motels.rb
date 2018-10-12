@@ -1,6 +1,6 @@
-class CreateHotels < ActiveRecord::Migration[5.2]
+class CreateMotels < ActiveRecord::Migration[5.2]
   def change
-    create_table :hotels do |t|
+    create_table :motels do |t|
       t.string :name
       t.integer :level, default: 0
       t.text :description
@@ -10,6 +10,6 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :hotels, :address, unique: true
+    add_index :motels, :address, unique: true
   end
 end

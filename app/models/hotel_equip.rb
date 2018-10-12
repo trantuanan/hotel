@@ -1,4 +1,6 @@
 class HotelEquip < ApplicationRecord
-  belongs_to :hotel
+  belongs_to :motel
   belongs_to :equipment
+
+  validates :price, presence: true
 end

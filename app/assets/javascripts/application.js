@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap
+//= require cocoon
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

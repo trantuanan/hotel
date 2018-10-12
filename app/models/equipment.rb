@@ -1,4 +1,13 @@
 class Equipment < ApplicationRecord
   has_many :hotel_equips
-  has_many :hotels, through: :hotel_equips
+  has_many :motels, through: :hotel_equips
+
+  validates :name, presence: true
+  before_save :beatify
+
+  private
+
+  def beatify
+    self.name = name.titleize
+  end
 end
