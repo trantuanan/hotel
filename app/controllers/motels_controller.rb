@@ -28,9 +28,18 @@ class MotelsController < ApplicationController
   end
 
   def update
+    if @motel.update_attributes motel_params
+      flash[:success] = t "flash.update_success"
+      redirect_to motels_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @motel.destroy
+    flash[:success] = t "flash.delete_success"
+    redirect_to motels_path
   end
 
   private
@@ -42,7 +51,7 @@ class MotelsController < ApplicationController
   end
 
   def find_motel
-    @motel = motel.find_by params[:id]
+    @motel = Motel.find_by params[:id]
 
     return if @motel
     flash[:danger] = t "flash.no_motel"

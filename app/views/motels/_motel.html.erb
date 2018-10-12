@@ -1,0 +1,5 @@
+<li>
+  <%= link_to motel.name, edit_motel_path(motel) %>
+  <%= link_to t("delete"), motel_path(motel), method: :delete,
+        data: {confirm: t("delete_confirm")} %>
+</li>
