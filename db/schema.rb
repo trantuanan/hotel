@@ -10,48 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_152043) do
-  
+ActiveRecord::Schema.define(version: 2018_10_09_160255) do
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "review_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "equipments", force: :cascade do |t|
+  create_table "equipment", force: :cascade do |t|
     t.string "name"
-    t.index ["name"], name: "index_equipments_on_name", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_equipment_on_name", unique: true
   end
 
   create_table "hotel_equips", force: :cascade do |t|
-    t.integer "hotel_id"
+    t.integer "motel_id"
     t.integer "equipment_id"
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["equipment_id"], name: "index_hotel_equips_on_equipment_id"
-    t.index ["hotel_id"], name: "index_hotel_equips_on_hotel_id"
-  end
-
-  create_table "hotel_images", force: :cascade do |t|
-    t.integer "hotel_id"
-    t.string "image"
-    t.index ["hotel_id"], name: "index_hotel_images_on_hotel_id"
+    t.index ["motel_id", "equipment_id"], name: "index_hotel_equips_on_motel_id_and_equipment_id", unique: true
+    t.index ["motel_id"], name: "index_hotel_equips_on_motel_id"
   end
 
   create_table "hotel_rooms", force: :cascade do |t|
-    t.integer "hotel_id"
+    t.integer "motel_id"
     t.integer "room_id"
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hotel_id"], name: "index_hotel_rooms_on_hotel_id"
+    t.index ["motel_id"], name: "index_hotel_rooms_on_motel_id"
     t.index ["room_id"], name: "index_hotel_rooms_on_room_id"
   end
 
-  create_table "hotels", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "motels", force: :cascade do |t|
     t.string "name"
     t.integer "level", default: 0
     t.text "description"
@@ -59,20 +67,16 @@ ActiveRecord::Schema.define(version: 2018_10_04_152043) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address"], name: "index_hotels_on_address", unique: true
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "user_id"
-    t.index ["review_id"], name: "index_likes_on_review_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.string "images"
+    t.index ["address"], name: "index_motels_on_address", unique: true
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "hotel_id"
+    t.integer "motel_id"
     t.integer "user_id"
-    t.index ["hotel_id"], name: "index_relationships_on_hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["motel_id"], name: "index_relationships_on_motel_id"
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
@@ -80,31 +84,31 @@ ActiveRecord::Schema.define(version: 2018_10_04_152043) do
     t.text "content"
     t.integer "comment_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_replies_on_comment_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
-  end
-
-  create_table "review_images", force: :cascade do |t|
-    t.integer "review_id"
-    t.string "image"
-    t.index ["review_id"], name: "index_review_images_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.integer "rate", default: 0
-    t.integer "hotel_id"
+    t.integer "motel_id"
     t.integer "user_id"
-    t.index ["hotel_id"], name: "index_reviews_on_hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["motel_id"], name: "index_reviews_on_motel_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "type"
+    t.string "room_type"
     t.integer "bed_numbers", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "guest_no", default: 1
+    t.index ["room_type"], name: "index_rooms_on_room_type", unique: true
   end
 
   create_table "users", force: :cascade do |t|

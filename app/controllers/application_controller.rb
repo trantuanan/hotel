@@ -12,6 +12,16 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}
   end
 
+  rescue_from CanCan::AccessDenied do |_exception|
+    flash[:danger] = t "flash.denied"
+    redirect_to request.referrer || root_url
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
+    flash[:danger] = t "flash.denied"
+    redirect_to request.referrer || root_url
+  end
+
   protected
 
   def storable_location?

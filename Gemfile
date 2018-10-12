@@ -21,6 +21,9 @@ gem "bootstrap-sass"
 gem "carrierwave"
 gem "mini_magick"
 gem "jquery-rails"
+gem 'cancancan', '~> 2.0'
+gem "kaminari"
+gem "cocoon"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
