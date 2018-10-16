@@ -3,5 +3,5 @@
   <%= t("activerecord.attributes.room.bed_numbers") %>: <%= room.bed_numbers %>
   <%= t("activerecord.attributes.room.guest_no") %>: <%= room.guest_no %>
   <%= link_to t("delete"), room_path(room), method: :delete,
-        data: {confirm: t("delete_confirm")} %>
+        data: {confirm: t("delete_confirm")}, class: "delete" %>
 </li>

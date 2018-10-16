@@ -1,7 +1,5 @@
 <%= provide :title, t("equipment.title") %>
-<div id="paginator">
-  <%= paginate @equipments, remote: true %>
-</div>
+<%= link_to t("equipment.add_equipment"), new_equipment_path, class: "btn btn-custom3" %>
 <div class="content">
   <ul id="equipments" class="equipments">
     <%= render partial:"equipment", collection: @equipments %>
@@ -10,4 +8,3 @@
 <div id="paginator1">
   <%= paginate @equipments, remote: true %>
 </div>
-<%= link_to t("equipment.add_equipment"), new_equipment_path, class: "btn btn-lg btn-primary" %>

@@ -1,7 +1,5 @@
 <%= provide :title, t("hotel.title") %>
-<div id="paginator">
-  <%= paginate @motels, remote: true %>
-</div>
+<%= link_to t("hotel.add_hotel"), new_motel_path, class: "btn btn-custom3" %>
 <div class="content">
   <ul id="motels" class="motels">
     <%= render @motels %>
@@ -10,4 +8,3 @@
 <div id="paginator1">
   <%= paginate @motels, remote: true %>
 </div>
-<%= link_to t("hotel.add_hotel"), new_motel_path, class: "btn btn-lg btn-primary" %>

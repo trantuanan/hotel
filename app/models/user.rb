@@ -32,9 +32,14 @@ class User < ApplicationRecord
   validates :email, presence: true,
     length: {maximum: Settings.email_max_length},
     uniqueness: {case_sensitive: false}
-  validates :password, {presence: true, format: {
-    with: PASSWORD_VALIDATOR
-  }}
+
+  validate :password_complexity
+
+  def password_complexity
+    return if password.blank? || password =~ PASSWORD_VALIDATOR
+
+    errors.add :password, I18n.t("activerecord.errors.models.user.attributes.password.invalid")
+  end
 
   mount_uploader :picture, PictureUploader
 end
