@@ -45,7 +45,7 @@ class RoomsController < ApplicationController
   end
 
   def find_room
-    @room = Room.find_by params[:id]
+    @room = Room.find(params[:id])
 
     return if @room
     flash[:danger] = t "flash.no_room"
