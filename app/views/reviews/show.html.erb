@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="well comment">
+        <div class="row">
+            <div class="comment-content">
+                <ul class="comment-errors"></ul>
+                <div class="blog-comment">
+                  <% if user_signed_in? %>
+                  <div class="pb-cmnt-container">
+                    <%= form_for :comment,
+                      url: review_comments_path(:review_id => @review.id),
+                      :html => {:class => "form-inline"}, remote: true do |f| %>
+                      <%= f.text_area :body, placeholder: "Add a comment",
+                        class: "box-clear" %><br/>
+                      <%= f.hidden_field :user_id, value: current_user.id, id: "user_review" %>
+                      <%= f.hidden_field :review_id, value: @review.id %>
+                      <%= f.submit "Add Comment",
+                        class: "btn btn-primary pull-right", data: {send: "review"} %>
+                    <% end %>
+                  </div>
+                  <hr/>
+                <% else %>
+                  <p>コメントのために<%= link_to "ログイン", new_user_session_path %>下さい</p>
+                  <%= form_for :comment,
+                      url: review_comments_path(:review_id => @review.id),
+                      :html => {:class => "form-inline"}, remote: true do |f| %>
+                    <%= f.hidden_field :review_id, value: @review.id %>
+                  <% end %>
+                <% end %>
+                <ul class="comments" id="comments_review">
+                  <li class="clearfix">
+                    <p>
+                      <%= render @review.comments.order(:created_at) %>
+                    </p>
+                  </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="comment-modal" class="modal fade"></div>

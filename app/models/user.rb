@@ -4,7 +4,7 @@ class User < ApplicationRecord
   enum user_type: [:member, :admin]
   enum blocked: [:active, :blocked]
   has_many :relationships
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :reviews
   has_many :replies
   has_many :likes
